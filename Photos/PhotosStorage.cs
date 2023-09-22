@@ -15,13 +15,20 @@ using Azure.Storage.Blobs;
 using Microsoft.Azure.Functions.Worker.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Configuration;
+using Photos.AnalyzerService.Abstraction;
 
 namespace Photos
 {
-    public static class PhotosStorage
+    public class PhotosStorage
     {
+        private readonly IAnalyzerService analyzerService;
+        public PhotosStorage(IAnalyzerService analyzeService)
+        {
+            this.analyzerService = analyzeService;
+        }
+
         [FunctionName("PhotosStorage")]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             [Blob("photos", FileAccess.ReadWrite, Connection = Literals.StorageConnectionString)] Azure.Storage.Blobs.BlobContainerClient blobContainer,
             [CosmosDB("photos", "metadata", Connection = Literals.CosmosDBConnection, CreateIfNotExists = true, PartitionKey = "/id")] IAsyncCollector<dynamic> items,
@@ -44,12 +51,15 @@ namespace Photos
             //await cloudBlockBlob.UploadFromByteArrayAsync(photoBytes, 0, photoBytes.Length);
             await cloudBlockBlob.UploadAsync(stream);
 
+            var analysisResult = await analyzerService.AnalyzeAsync(photoBytes);
+
             var item = new
             {
                 id = newId,
                 name = request.Name,
                 description = request.Description,
-                tags = request.Tags
+                tags = request.Tags,
+                analysis = analysisResult
             };
 
             await items.AddAsync(item);

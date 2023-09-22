@@ -22,6 +22,9 @@ namespace Photos.Models
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
 
+        [JsonProperty("analysis")]
+        public Analysis Analysis { get; set; }
+
         [JsonProperty("photo")]
         public string Photo { get; set; }
     }
