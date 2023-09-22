@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "C6W9lObT0/tNXgqrYRCmhiKljbeakSN0YLKYpF41VC6MqYQgejTGQIiY2LLNvMUqsR8A5oQjbTq6NYWl50AHXQ==",
+  "dgSpecHash": "KjkGcbs/+kRGxX6x7KhL7lLTOoGBhnTp6dSw25HYc1IaptG+B7GOSnRKlYxgiFMgngJR2DOPVZEO0tFg+O383Q==",
   "success": true,
   "projectFilePath": "D:\\dev\\Azure Functions for Developers\\Photos\\Photos\\Photos.AnalyzerService.Abstraction\\Photos.AnalyzerService.Abstraction.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\eryxj\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\eryxj\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\eryxj\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\eryxj\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\eryxj\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
